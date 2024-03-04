@@ -1,12 +1,18 @@
-import React from 'react'
-import Cart from './Cart'
+import React from "react";
+import Cart from "./Cart";
 
-const BackDrop = () => {
+const BackDrop = (props) => {
   return (
-    <section className='back-drop'>
-        <Cart/>
-    </section>
-  )
-}
+    <>
+      {
+          props.showCart &&(
+          <>
+          <section className="back-drop" onClick={props.hideCartHandler} />
+          <Cart hideCartHandler={props.hideCartHandler} />
+          </>)
+      }
+    </>
+  );
+};
 
-export default BackDrop
+export default BackDrop;

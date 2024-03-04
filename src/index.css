@@ -92,12 +92,15 @@
 }
 
 .cart-box{
-  background-color: #fff;
+  background-color: #f3f3f3;
   padding: 20px 80px;
   width: 60%;
-  position: relative;
+  position: fixed;
   z-index: 1000;
   border-radius: 8px;
+  top: 40vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .cart{
@@ -117,7 +120,7 @@
 .btns{
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .order-btn{
@@ -137,4 +140,39 @@
   font-size: 18px;
   color: orange;
   margin-right: 20px;
+}
+
+.card-quantity{
+  text-align: center;
+  padding: 4px 6px;
+  background-color: orange;
+  font-weight: 500;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.quantity-btn{
+  border: 1px solid orange;
+  background-color: transparent;
+  color: orange;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.m-ctr{
+  margin-right: 8px;
+}
+
+button{
+  cursor: pointer;
+}
+
+.no-items{
+  text-align: center;
+}
+
+.overflow-ctr{
+  height: 400px;
+  overflow-y: scroll;
 }

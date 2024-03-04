@@ -1,10 +1,10 @@
 import Main from "./layout/Main";
-
+import ItemContextProvider from "./store/itemContext";
 function App() {
   return (
-    <div className="App">
-      <Main/>
-    </div>
+      <ItemContextProvider>
+        <Main />
+      </ItemContextProvider>
   );
 }
 

@@ -1,43 +1,41 @@
+import { useContext } from "react";
 import CartItem from "./CartItem";
+import { itemContext } from "../store/itemContext";
 
-const fruits = [
-  {
-    id: 1,
-    price: 10.89,
-    name: "Banana",
-    description: "fresh banana from YeU",
-    quantity: 2,
-  },
-  {
-    id: 2,
-    price: 12.89,
-    name: "Apple",
-    description: "fresh Apple from YeU",
-    quantity: 2,
-  },
-  {
-    id: 3,
-    price: 1.89,
-    name: "Guava",
-    description: "fresh Guava from YeU",
-    quantity: 2,
-  },
-];
-const Cart = () => {
+const Cart = (props) => {
+  const { items, totalAmount } = useContext(itemContext);
+  const totalPrice = `$ ${totalAmount.toFixed(2)}`
   return (
     <div className="cart-box">
-        <h2>Carts</h2>
-      {fruits.map((fruit)=>(
-        <CartItem key={fruit.id} fruit={fruit}/>
-      ))}
+      <h2>Your cart items are Here!</h2>
+      <section className="overflow-ctr">
+        {items.length < 1 ? (
+          <h1 className="no-items">No Items Here</h1>
+        ) : (
+          <>
+            {items.map((fruit) => (
+              <CartItem key={fruit.id} fruit={fruit} />
+            ))}
+          </>
+        )}
+      </section>
+
       <hr />
       <div className="total">
         <h2>Total Prices</h2>
-        <p>$ 300</p>
+        <p> {totalPrice}</p>
       </div>
       <div className="btns">
-        <button className="close-btn">Close</button>
-        <button className="order-btn">Order</button>
+        <button className="close-btn" onClick={props.hideCartHandler}>
+          Close
+        </button>
+        {items.length < 1 ? (
+          <></>
+        ) : (
+          <button className="order-btn" onClick={()=>{
+            alert("Ordered success!!")
+          }}>Order</button>
+        )}
       </div>
     </div>
   );
